@@ -40,7 +40,7 @@
                         <tbody>
                         <tr v-for="product in products">
                             <td class="col-4"> {{product.name}}</td>
-                            <td class="col-4"> {{product.category.name}}</td>
+                            <td class="col-4"><span v-text="product.category ? product.category.name : ''"></span></td>
                             <td class="col-3"> {{product.price}}</td>
                             <td class="col-1">
                                 <button class="btn btn-success" @click.prevent="loadProduct(product)"> Editar</button>
@@ -127,6 +127,10 @@
                             <label>Arquivo
                                 <input type="file" id="file" ref="file" v-on:change="handleFileImport()"/>
                             </label>
+                        </div>
+
+                        <div class="col-12">
+                            Os campos para importação é Nome, Categoria, Preço, Descrição
                         </div>
 
                         <div class="form-group col-md-12">
@@ -285,7 +289,7 @@
                                     }
                                 }
                             ).then(function (res) {
-                                this.messages  = 'Produto inserido com sucesso.';
+                                this.messages = 'Produto inserido com sucesso.';
                             }).catch(function (res) {
                                 console.log('FAILURE!!');
                             });

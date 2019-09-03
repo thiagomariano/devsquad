@@ -53,8 +53,19 @@ class Product extends Model
                 for ($i = 1; $i < count($meuArray); $i++) {
                     $dados = explode(';', $meuArray[$i][0]);
 
+
                     //print_r($dados);
                     if (!DB::table('products')->where('name', $dados[0])->first()) {
+
+                        $verifyCategory = DB::table('categories')->where('name', $dados[1])->first();
+
+                        if ($verifyCategory) {
+                            $dados[1] = $verifyCategory->id;
+                        } else {
+                            $category = Category::create(['name' => $dados[1]]);
+                            $dados[1] = $category->id;
+                        }
+
                         $product = Product::create([
                             'name' => $dados[0],
                             'category_id' => $dados[1],

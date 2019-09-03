@@ -2287,6 +2287,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 var API_URL = 'http://localhost:8000/api';
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3595,7 +3599,13 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("td", { staticClass: "col-4" }, [
-                        _vm._v(" " + _vm._s(product.category.name))
+                        _c("span", {
+                          domProps: {
+                            textContent: _vm._s(
+                              product.category ? product.category.name : ""
+                            )
+                          }
+                        })
                       ]),
                       _vm._v(" "),
                       _c("td", { staticClass: "col-3" }, [
@@ -3920,6 +3930,12 @@ var render = function() {
                         }
                       })
                     ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-12" }, [
+                    _vm._v(
+                      "\n                        Os campos para importação é Nome, Categoria, Preço, Descrição\n                    "
+                    )
                   ]),
                   _vm._v(" "),
                   _vm._m(1)
